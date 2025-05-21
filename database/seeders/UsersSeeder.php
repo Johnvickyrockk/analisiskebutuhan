@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +15,7 @@ class UsersSeeder extends Seeder
      */
     public function run(): void
     {
-        // Hapus semua data users dengan aman (menghindari error foreign key)
-        DB::table('users')->delete();
-
-        // Data user yang akan di-insert
-        $users = [
+       $users = [
             [
                 'name' => 'Super Admin',
                 'email' => 'superadmin@gmail.com',
@@ -56,10 +53,9 @@ class UsersSeeder extends Seeder
             ],
         ];
 
-        // Loop dan masukkan ke database
         foreach ($users as $user) {
             DB::table('users')->updateOrInsert(
-                ['email' => $user['email']],
+                ['email' => $user['email']], // key untuk cari data
                 [
                     'uuid' => Str::uuid(),
                     'name' => $user['name'],
@@ -72,3 +68,4 @@ class UsersSeeder extends Seeder
         }
     }
 }
+    

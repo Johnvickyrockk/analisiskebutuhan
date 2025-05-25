@@ -34,6 +34,13 @@
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#tracking">Tracking</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li>
+                    <a href="{{ route('cart') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 24px; height: 24px;">>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                        </svg>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -194,28 +201,37 @@
             <p class="description-first">Kami menawarkan layanan perawatan dan pembersihan sepatu terbaik untuk menjaga
                 penampilan dan kualitas sepatu Anda. Setiap layanan dirancang untuk memenuhi kebutuhan spesifik Anda dan
                 memastikan kepuasan maksimal.</p>
-            @foreach ($categories as $categoryLayanan)
-                <!-- Kategori Induk -->
-                <div class="service-category">
-                    <h3>{{ $categoryLayanan->treatment_type }}</h3>
-                    <p>{{ $categoryLayanan->description }}</p>
-                    <div class="subcategory-container">
-                        @if ($categoryLayanan->category)
-                            <!-- Pastikan categories tidak null -->
-                            @foreach ($categoryLayanan->category as $subcategory)
-                                <div class="subcategory-item">
-                                    <strong>{{ $subcategory->nama_kategori }}</strong>
-                                    <p>{{ $subcategory->description }}</p>
-                                    <span class="price">Rp
-                                        {{ number_format($subcategory->price, 0, ',', '.') }}</span>
-                                </div>
-                            @endforeach
-                        @else
-                            <p>No subcategories available.</p>
-                        @endif
+                @foreach ($categories as $categoryLayanan)
+    <div class="service-category">
+        <h3>{{ $categoryLayanan->treatment_type }}</h3>
+        <p>{{ $categoryLayanan->description }}</p>
+        <div class="subcategory-container">
+            @if ($categoryLayanan->category)
+                @foreach ($categoryLayanan->category as $subcategory)
+                    <div class="subcategory-item">
+                        <strong>{{ $subcategory->nama_kategori }}</strong>
+                        <p>{{ $subcategory->description }}</p>
+                        <span class="price">Rp {{ number_format($subcategory->price, 0, ',', '.') }}</span>
+
+                        <!-- Form tambah ke keranjang -->
+                        <form action="{{ route('cart.add') }}" method="POST" style="margin-top:10px;">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $subcategory->id }}">
+                            <input type="hidden" name="name" value="{{ $subcategory->nama_kategori }}">
+                            <input type="hidden" name="category" value="{{ $categoryLayanan->treatment_type }}">
+                            <input type="hidden" name="price" value="{{ $subcategory->price }}">
+                            <label for="quantity_{{ $subcategory->id }}">Jumlah:</label>
+                            <input type="number" id="quantity_{{ $subcategory->id }}" name="quantity" value="1" min="1" style="width:60px;">
+                            <button type="submit">Tambah ke Keranjang</button>
+                        </form>
                     </div>
-                </div>
-            @endforeach
+                @endforeach
+            @else
+                <p>No subcategories available.</p>
+            @endif
+        </div>
+    </div>
+@endforeach
 
         </div>
     </section>

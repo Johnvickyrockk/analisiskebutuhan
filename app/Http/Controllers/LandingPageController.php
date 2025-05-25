@@ -182,4 +182,57 @@ class LandingPageController extends Controller
 
         return view('LandingPage.detail-blog', compact('blog'));
     }
+
+    public function showCart()
+    {
+        // Ambil data cart dari session, default kosong array
+        $cart = session()->get('cart', []);
+    
+        // Hitung total harga (price * quantity) dari setiap item di cart
+        $total = collect($cart)->sum(function ($item) {
+            return $item['price'] * $item['quantity'];
+        });
+    
+        // Kirim data ke view
+        return view('LandingPage.show-cart', compact('cart', 'total'));
+    }
+    
+    public function addToCart(Request $request)
+    {
+        $cart = session()->get('cart', []);
+
+        $id = $request->id;
+
+        if(isset($cart[$id])) {
+            // Jika sudah ada di keranjang, update quantity
+            $cart[$id]['quantity'] += $request->quantity;
+        } else {
+            // Tambah item baru
+            $cart[$id] = [
+                "id" => $id,
+                "name" => $request->name,
+                "category" => $request->category,
+                "price" => $request->price,
+                "quantity" => $request->quantity,
+            ];
+        }
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Layanan berhasil ditambahkan ke keranjang!');
+    }
+
+    public function removeFromCart($id)
+    {
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$id])) {
+            unset($cart[$id]);
+            session()->put('cart', $cart);
+            return redirect()->back()->with('success', 'Item berhasil dihapus dari keranjang.');
+        }
+
+        return redirect()->back()->with('error', 'Item tidak ditemukan di keranjang.');
+    }
+
 }

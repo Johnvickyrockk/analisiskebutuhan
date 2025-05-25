@@ -31,6 +31,10 @@ Route::post('/advice', [AdviceController::class, 'postAdvice'])->name('advice');
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/cart', [LandingPageController::class, 'showCart'])->name('cart');
+    Route::post('/cart/add', [LandingPageController::class, 'addToCart'])->name('cart.add');
+    Route::delete('/cart/{id}', [LandingPageController::class, 'removeFromCart'])->name('cart.remove');
+
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/get-hadiah-data', [DoorprizeController::class, 'getHadiahData'])->name('get-hadiah-data');
     Route::get('/hadiah-data', [DoorprizeController::class, 'getHadiah'])->name('hadiah-data');

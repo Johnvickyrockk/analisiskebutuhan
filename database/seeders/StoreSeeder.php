@@ -17,7 +17,7 @@ class StoreSeeder extends Seeder
         if (Store::count() === 0) {
             Store::create([
                 'uuid' => Str::uuid(),
-                'name' => 'CUCISEPATU',
+                'name' => 'Calci Shoes Care',
                 'description' => 'Jasa Cuci Sepatu Modern & Profesional',
                 'address' => 'Jl. IR. SUTAMI, ATAMBUA',
                 'longitude' => 124.892494,

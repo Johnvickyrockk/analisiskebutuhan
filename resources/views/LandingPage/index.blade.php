@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Cleds</title>
+    <title>Calci Shoes Care</title>
     <link rel="stylesheet" href="{{ asset('/LandingPage/css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Leaflet CSS -->
@@ -69,30 +69,7 @@
     </section>
 
 
-    <!-- Hero Section -->
-    <!-- <section id="home" class="hero">
-    <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{{ asset('LandingPage/image/cucisepatu1.jpg') }}" class="d-block w-100" alt="sepatu">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('LandingPage/image/cucisepatu2.jpg') }}" class="d-block w-100" alt="sepatu">
-    </div>
-    <div class="carousel-item">
-      <img src="{{ asset('LandingPage/image/cucisepatu3.jpg') }}" class="d-block w-100" alt="sepatu">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</section> -->
+   
 
 
     <!-- Promo Section -->
@@ -173,23 +150,6 @@
             <p>Jangan biarkan sepatu kotor merusak gaya Anda. Percayakan kebersihan sepatu Anda kepada kami dan rasakan
                 perbedaannya!</p>
         </div>
-
-        <!-- Social Media Icons with Custom Images
-<div class="social-icons">
-    <a href="https://facebook.com" target="_blank" class="social-icon">
-    <i class="bi bi-facebook" style="color: red;"></i>
-
-    </a>
-    <a href="https://instagram.com" target="_blank" class="social-icon">
-        <img src="path/to/instagram-icon.png" alt="Instagram Icon">
-    </a>
-    <a href="https://play.google.com" target="_blank" class="social-icon">
-        <img src="path/to/android-icon.png" alt="Android Icon">
-    </a>
-    <a href="https://line.me" target="_blank" class="social-icon">
-        <img src="path/to/line-icon.png" alt="Line Icon">
-    </a>
-</div> -->
 
 
     </section>

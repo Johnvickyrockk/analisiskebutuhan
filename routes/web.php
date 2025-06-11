@@ -155,5 +155,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/transaksi/list', [TransaksiController::class, 'list'])->name('transaksi.list');
     });
 
+    
 
 });

@@ -234,7 +234,7 @@
         <!-- Form Section -->
         <div class="form-section">
             <div class="text-center login-title">Login</div>
-            <div class="text-center sub-title">Don't have an account yet?</div>
+            <div class="text-center sub-title">Jika Tidak Ada Akun Bisa Registrasi</div>
             <form class="p-3 mt-3" method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-field d-flex align-items-center">
@@ -249,7 +249,7 @@
                 <button type="submit" class="btn">Login</button>
             </form>
             <div class="text-center fs-6">
-                <a href="{{ route('landingPage') }}">Back to Landing Page?</a>
+                <a href="{{ route('landingPage') }}">Registrasi sekarang</a>
             </div>
         </div>
     </div>
